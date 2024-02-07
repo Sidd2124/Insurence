@@ -1,0 +1,82 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: black;
+    color: white;
+    overflow: auto;
+  }
+  
+  .logo {
+    width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+    /* Add animation */
+  }
+  
+  .FarmerLogo {
+    animation: logoAnimation 2s ease infinite alternate;
+  }
+  
+  /* Add keyframes for logo animation */
+  @keyframes logoAnimation {
+    0% {
+      transform: translateY(0);
+      opacity: 0.5; /* Starting opacity */
+    }
+    50% {
+      transform: translateY(-30px); /* Change the amount of translation as needed */
+      opacity: 1; /* Midway opacity */
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 0.5; /* Ending opacity */
+    }
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .docs-list {
+    width: 100%;
+  }
+  
+  input[type='search'] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Media queries for responsiveness */
+  @media (max-width: 768px) {
+    .logo {
+      width: 180px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .FarmerLogo {
+      width: 300px;
+      height: 450px;
+      margin-bottom: 0px; /* Adjust margin for smaller devices */
+    }
+    .container {
+      height: 100vh;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+  }
+  
