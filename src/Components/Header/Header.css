@@ -1,0 +1,18 @@
+.Link {
+    text-decoration: none; /* Remove default underline */
+  }
+  .TopHeader{
+    display: flex;
+    justify-content: center;
+  }
+  .Buttons {
+   padding: 5px;
+    background-color: orange;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: black; 
+   font-size: 11px;
+    border-radius: 5px;
+ 
+  }
+  
+  

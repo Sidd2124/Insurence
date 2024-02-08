@@ -3,9 +3,9 @@ import DocsItem from "./DocsItems/Docsitems";
 import {Link} from 'react-router-dom'
 import "react-phone-input-2/lib/style.css";
 import Naresh from './Logo.png';
-import Wall from './Logo2.png'
-import './styles.css';
 
+import './styles.css';
+import Header from '../Components/Header/Header'
 
 import Context from './Context/Context'
 
@@ -20,22 +20,28 @@ const Details = () => {
 
     const UpdatedDetails = FinelArray.filter((each) => String(each.Number).includes(PhoneNumber));
 
+    const Hide = FinelArray.length === 0 ? { display: "none" } : { display: "block" };
+
     return (
         <div className="container">
+                <Header/>
             <img src={Naresh} alt="Company logo" className="logo" />
+            
+      
 
-           <Link to="/Entries">
+          <input type='search' style={Hide} placeholder='Search Former By Phone Number' onChange={Phone} />
+          {FinelArray.length===0?<div>
+            <h1 className='Warning FarmerLogo'>Please Add Formers Details <Link to="/Entries" className="Link">
+<button className='Buttons'>New Farmer</button>
+</Link></h1>
+           
+            </div>:  
+       
+            <div className="docs-list">
+            {UpdatedDetails.map((each, index) => <DocsItem key={index} Info={each}  />)}
+            </div>
           
-           <button>
-           Add Former Details
-            </button></Link>
-
-          {FinelArray.length===0?<div><h1>Plaese Add Formers Details</h1>
-            <img src={Wall} alt="Farmer Logo" className='FarmerLogo'/>
-            </div>:  <div className="docs-list">
-                <input type='search' placeholder='Search Former By Phone Number' onChange={Phone} />
-                {UpdatedDetails.map((each, index) => <DocsItem key={index} Info={each}  />)}
-            </div>}
+            }
         </div>
     );
 };

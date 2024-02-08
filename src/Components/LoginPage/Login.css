@@ -1,0 +1,73 @@
+.signin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 10px;
+    background-color: black;
+  }
+  .LoginLogo{
+    height: 300px;
+  }
+  .content {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .form {
+    margin-top: 20px;
+  }
+  
+  .inputBox {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+    font-size: 16px;
+  }
+  
+  input[type="submit"] {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #888;
+    pointer-events: none;
+    transition: 0.3s;
+  }
+  
+  input[type="text"]:focus ~ label,
+  input[type="password"]:focus ~ label,
+  input[type="text"]:valid ~ label,
+  input[type="password"]:valid ~ label {
+    top: -15px;
+    left: 0;
+    font-size: 12px;
+    color: #007bff;
+  }
+  
+  

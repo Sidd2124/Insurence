@@ -1,39 +1,39 @@
 .container {
+  background-image: url("https://i.ibb.co/nmqMSTR/Whats-App-Image-2024-02-07-at-6-35-25-PM.jpg");
+  background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
     background-color: black;
     color: white;
-    overflow: auto;
+  height: 100vh;
   }
   
   .logo {
-    width: 200px;
+    width: 400px;
     height: auto;
     margin-bottom: 20px;
     /* Add animation */
   }
   
-  .FarmerLogo {
-    animation: logoAnimation 2s ease infinite alternate;
+/* Define the animation */
+/* Define the animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Start with opacity 0 */
   }
-  
-  /* Add keyframes for logo animation */
-  @keyframes logoAnimation {
-    0% {
-      transform: translateY(0);
-      opacity: 0.5; /* Starting opacity */
-    }
-    50% {
-      transform: translateY(-30px); /* Change the amount of translation as needed */
-      opacity: 1; /* Midway opacity */
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 0.5; /* Ending opacity */
-    }
+  to {
+    opacity: 1; /* End with full opacity */
   }
+}
+
+/* Apply the animation to the logo */
+.FarmerLogo {
+  animation: fadeIn 4s ease ; /* Apply the animation */
+}
+
+
   
   button {
     padding: 10px 20px;
@@ -51,6 +51,7 @@
   
   .docs-list {
     width: 100%;
+    overflow: auto;
   }
   
   input[type='search'] {
@@ -60,20 +61,35 @@
     border-radius: 5px;
     border: 1px solid #ccc;
   }
+
+  h1{
+    color: orange;
+    font-size: 22px;
+  }
+
+  .Warning{
+     background: rgba(148, 146, 146, 0.32);
+     color: black;
+    margin-top
+    : 60px;
+    padding: 90px;
+    border-radius:8px;
+    border: 1px solid black;
+  }
   
   /* Media queries for responsiveness */
   @media (max-width: 768px) {
     .logo {
-      width: 180px;
+     
+      margin-right: 200px;
+     
     }
   }
+
+
   
   @media (max-width: 576px) {
-    .FarmerLogo {
-      width: 300px;
-      height: 450px;
-      margin-bottom: 0px; /* Adjust margin for smaller devices */
-    }
+   
     .container {
       height: 100vh;
       font-family: Georgia, 'Times New Roman', Times, serif;

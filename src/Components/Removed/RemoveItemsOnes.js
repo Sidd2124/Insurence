@@ -1,10 +1,9 @@
-import React, { useContext } from 'react';
-import './Docs.css';
-import Context from '../Context/Context';
 
-const DocsItem = ({ Info }) => {
-    const { Name, Number, InsurenceStatus, InsurenceDocument,InsurenceDate, ImageURL, id } = Info;
-    const { FinelRemove,RemoveingKarshak } = useContext(Context);
+
+
+const RemoveItemOnes = ({ Info }) => {
+    const { Name, Number, InsurenceStatus, InsurenceDocument,InsurenceDate, ImageURL, } = Info;
+    
 
     const handleDownload = () => {
         if (typeof InsurenceDocument === 'string') {
@@ -38,18 +37,7 @@ const DocsItem = ({ Info }) => {
         }
     };
 
-    const handleRemove = () => {
-        FinelRemove(id)
-        RemoveingKarshak({
-           
-            Name: Name,
-            Number: Number,
-            ImageURL: ImageURL,
-            InsurenceDocument: InsurenceDocument,
-            InsurenceStatus: InsurenceStatus,
-            InsurenceDate:InsurenceDate,
-          })
-    };
+   
 
     return (
         <div className="responsive-container">
@@ -61,11 +49,11 @@ const DocsItem = ({ Info }) => {
                 <p>InsuranceDate:{String(InsurenceDate).split("-").reverse().join("-")}</p>
                 <div className='Button'>
                     <button onClick={handleDownload} className="download-btn">Download Document</button>
-                    <button onClick={handleRemove} className="download-btn">Remove Former</button>
+                    
                 </div>
             </div>
         </div>
     );
 };
 
-export default DocsItem;
+export default RemoveItemOnes;

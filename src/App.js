@@ -4,23 +4,32 @@ import Details from './Components/Details';
 import './App.css';
 import Context from './Components/Context/Context';
 import FormerEntry from './Components/Entries/FormerEntry';
+import Removes from './Components/Removed/RemoveItems'
+
+import Login from './Components/LoginPage/Login'
 
 class App extends Component {
   state = {
-    FirstArray: [
-      
-    ]
+    FirstArray: [],RemovedOnes:[],
   };
 
   
-  componentDidMount() {
-    const You = JSON.parse(localStorage.getItem("Info"));
-    if (You) {
-      this.setState({ FirstArray: You });
-    }
-  }
+
 
  
+  componentDidMount() {
+    const You = localStorage.getItem("Info");
+    if (You) {
+      this.setState({ FirstArray: JSON.parse(You) });
+    }
+
+  const Sk = localStorage.getItem("Sidd");
+
+  if(Sk){
+    this.setState({RemovedOnes:JSON.parse(Sk)})
+  }
+   
+  }
   
 
 
@@ -31,6 +40,13 @@ class App extends Component {
     localStorage.setItem("Info", JSON.stringify(filteredArray));
   };
   
+  Kisan = (N) => {
+    this.setState(prevState => {
+      const updatedRemovedOnes = [...prevState.RemovedOnes, N];
+      localStorage.setItem("Sidd", JSON.stringify(updatedRemovedOnes));
+      return { RemovedOnes: updatedRemovedOnes };
+    });
+  }
   
   
 
@@ -43,14 +59,16 @@ class App extends Component {
   };
   
   render() {
-    const { FirstArray } = this.state;
+    const { FirstArray,RemovedOnes} = this.state;
     return (
       <div className="App">
-        <Context.Provider value={{ FinelArray: FirstArray, NewArray: this.Update,FinelRemove:this.Happend }}>  
+        <Context.Provider value={{ FinelArray: FirstArray, NewArray: this.Update,FinelRemove:this.Happend,RemovedFarmers:RemovedOnes,RemoveingKarshak:this.Kisan }}>  
           <BrowserRouter>
             <Switch>
               <Route exact path="/" component={Details} />
               <Route exact path="/Entries" component={FormerEntry} />
+              <Route exact path="/RemovesFarmers" component={Removes} />
+              <Route exact path="/Login" component={Login}/>
             </Switch>
           </BrowserRouter>
         </Context.Provider>
