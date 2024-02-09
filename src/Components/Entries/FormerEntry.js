@@ -35,8 +35,8 @@ SetDate(e.target.value)
 
     const UpdateDocument = (e) => {
         const file = e.target.files[0];
-        
-        setInsurenceDocument(file);
+        const New= window.URL.createObjectURL(file);
+        setInsurenceDocument(New);
     };
 
     const UpdatePic = (e) => {

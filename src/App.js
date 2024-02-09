@@ -13,7 +13,6 @@ class App extends Component {
     FirstArray: [],RemovedOnes:[],
   };
 
-  
 
 
  
@@ -21,6 +20,7 @@ class App extends Component {
     const You = localStorage.getItem("Info");
     if (You) {
       this.setState({ FirstArray: JSON.parse(You) });
+     
     }
 
   const Sk = localStorage.getItem("Sidd");
@@ -38,6 +38,8 @@ class App extends Component {
     const filteredArray = FirstArray.filter((each) => each.id !== K);
     this.setState({ FirstArray: filteredArray });
     localStorage.setItem("Info", JSON.stringify(filteredArray));
+   
+
   };
   
   Kisan = (N) => {
@@ -60,6 +62,7 @@ class App extends Component {
   
   render() {
     const { FirstArray,RemovedOnes} = this.state;
+    console.log(FirstArray)
     return (
       <div className="App">
         <Context.Provider value={{ FinelArray: FirstArray, NewArray: this.Update,FinelRemove:this.Happend,RemovedFarmers:RemovedOnes,RemoveingKarshak:this.Kisan }}>  
