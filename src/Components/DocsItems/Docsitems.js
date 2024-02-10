@@ -7,7 +7,7 @@ const DocsItem = ({ Info }) => {
     const { FinelRemove, RemoveingKarshak } = useContext(Context);
 
     const handleRemove = () => {
-        // Handle removing the item
+        
         FinelRemove(id);
         RemoveingKarshak({
             Name,
