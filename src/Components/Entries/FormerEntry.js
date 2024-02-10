@@ -41,7 +41,7 @@ SetDate(e.target.value)
 
     const UpdatePic = (e) => {
         const imageURL = URL.createObjectURL(e.target.files[0]);
-        console.log(imageURL)
+        
         setImageURL(imageURL);
     };
 

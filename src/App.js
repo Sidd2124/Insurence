@@ -62,7 +62,7 @@ class App extends Component {
   
   render() {
     const { FirstArray,RemovedOnes} = this.state;
-    console.log(FirstArray)
+    
     return (
       <div className="App">
         <Context.Provider value={{ FinelArray: FirstArray, NewArray: this.Update,FinelRemove:this.Happend,RemovedFarmers:RemovedOnes,RemoveingKarshak:this.Kisan }}>  

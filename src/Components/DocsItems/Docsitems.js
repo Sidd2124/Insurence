@@ -5,9 +5,10 @@ import Context from '../Context/Context';
 const DocsItem = ({ Info }) => {
     const { Name, Number, InsurenceStatus, InsurenceDocument, InsurenceDate, ImageURL, id } = Info;
     const { FinelRemove, RemoveingKarshak } = useContext(Context);
+    
 
+   
     const handleRemove = () => {
-        
         FinelRemove(id);
         RemoveingKarshak({
             Name,
@@ -21,7 +22,9 @@ const DocsItem = ({ Info }) => {
 
     return (
         <div className="responsive-container">
-            <img src={ImageURL} alt="Former Pic" className="former-pic" />
+            
+                <img src={ImageURL} alt="Former Pic" className="former-pic" />
+            
             <div className="details">
                 <h1 className="former-name">{Name}</h1>
                 <p className="former-number">Mobile Number: {Number}</p>
