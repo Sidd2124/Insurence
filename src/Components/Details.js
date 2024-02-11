@@ -4,6 +4,10 @@ import {Link} from 'react-router-dom'
 import "react-phone-input-2/lib/style.css";
 import Naresh from './Logo.png';
 
+import { Redirect } from 'react-router-dom'
+
+import Cookies from 'js-cookie';
+
 import './styles.css';
 import Header from '../Components/Header/Header'
 
@@ -21,6 +25,12 @@ const Details = () => {
     const UpdatedDetails = FinelArray.filter((each) => String(each.Number).includes(PhoneNumber));
 
     const Hide = FinelArray.length === 0 ? { display: "none" } : { display: "block" };
+
+    const Valide=Cookies.get("Token")
+if(Valide===undefined){
+    return <Redirect to="Login"/>
+}
+
 
     return (
         <div className="container">

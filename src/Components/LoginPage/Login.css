@@ -10,6 +10,9 @@
   .LoginLogo{
     height: 300px;
   }
+  .Warningss{
+    color: red;
+  }
   .content {
     background: #f4f4f4;
     padding: 20px;
