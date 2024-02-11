@@ -1,34 +1,21 @@
-
-
+import React from "react";
 
 const RemoveItemOnes = ({ Info }) => {
-    const { Name, Number, InsurenceStatus, InsurenceDocument,InsurenceDate, ImageURL, } = Info;
-    
+    const { Name, Number, InsurenceStatus, InsurenceDocument, InsurenceDate, ImageURL } = Info;
 
     const handleDownload = () => {
         if (typeof InsurenceDocument === 'string') {
             // Handle downloading a docx file
             if (InsurenceDocument.toLowerCase().endsWith('.docx')) {
-                const a = document.createElement('a');
-                a.href = InsurenceDocument;
-                a.download = `${Name}_Insurence_Copy.docx`; 
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
+                downloadDocument(InsurenceDocument, `${Name}_Insurence_Copy.docx`);
             } else {
                 alert('Invalid document format.');
             }
         } else if (InsurenceDocument instanceof Blob) {
             // Handle downloading a pdf or docx file
             if (InsurenceDocument.type === 'application/pdf' || InsurenceDocument.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
-                const url = window.URL.createObjectURL(InsurenceDocument);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `${Name}_Insurence_Copy.${InsurenceDocument.type === 'application/pdf' ? 'pdf' : 'docx'}`; 
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                window.URL.revokeObjectURL(url);
+                const url = URL.createObjectURL(InsurenceDocument);
+                downloadDocument(url, `${Name}_Insurence_Copy.${InsurenceDocument.type === 'application/pdf' ? 'pdf' : 'docx'}`);
             } else {
                 alert('Invalid document format.');
             }
@@ -37,7 +24,15 @@ const RemoveItemOnes = ({ Info }) => {
         }
     };
 
-   
+    const downloadDocument = (url, filename) => {
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    };
 
     return (
         <div className="responsive-container">
@@ -46,10 +41,10 @@ const RemoveItemOnes = ({ Info }) => {
                 <h1 className="former-name">{Name}</h1>
                 <p className="former-number">Mobile Number:+ {Number}</p>
                 <p className="insurance-status">Insurance Status: {InsurenceStatus}</p>
-                <p>InsuranceDate:{String(InsurenceDate).split("-").reverse().join("-")}</p>
+                <p>Insurance Date:{String(InsurenceDate).split("-").reverse().join("/")}</p>
+              
                 <div className='Button'>
                     <button onClick={handleDownload} className="download-btn">Download Document</button>
-                    
                 </div>
             </div>
         </div>
