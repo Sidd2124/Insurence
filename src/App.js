@@ -56,7 +56,8 @@ class App extends Component {
   render() {
     const { FirstArray, RemovedOnes } = this.state;
 
-    console.log(FirstArray)
+   
+
     return (
       <div className="App">
         {/* Provide context value to all children components */}

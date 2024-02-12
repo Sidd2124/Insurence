@@ -6,14 +6,19 @@ const DocsItem = ({ Info }) => {
   const {
     Name,
     Number,
-    InsurenceStatus,
     InsurenceDocument,
     InsurenceDate,
     ImageURL,
     id,
+    AdharDocumentFront,
+    AdharDocumentBack,
+    InsurenceNo,
+    AavuFront,
+    AavuBack,
+    AavuRight,
+    AavuLeft
   } = Info;
   const { FinelRemove, RemoveingKarshak } = useContext(Context);
-  console.log(ImageURL)
 
   const handleRemove = () => {
     FinelRemove(id);
@@ -22,8 +27,14 @@ const DocsItem = ({ Info }) => {
       Number,
       ImageURL,
       InsurenceDocument,
-      InsurenceStatus,
       InsurenceDate,
+      AdharDocumentFront,
+      AdharDocumentBack,
+      InsurenceNo,
+      AavuFront,
+      AavuBack,
+      AavuRight,
+      AavuLeft
     });
   };
 
@@ -36,33 +47,45 @@ const DocsItem = ({ Info }) => {
     FinelRemove(id); 
   }
 
+
+  
+  
+  
+  
+
   return (
     <div className="responsive-container">
-      {ImageURL && typeof ImageURL === "string" ? (
-        <img src={ImageURL} alt="Former Pic" className="former-pic" />
-      ) : (
-        <p>No image available</p>
-      )}
-
+      {ImageURL && <img src={ImageURL} alt="Former Pic" className="former-pic" />}
       <div className="details">
         <h1 className="former-name">{Name}</h1>
         <p className="former-number">Mobile Number: {Number}</p>
-        <p className="insurance-status">Insurance Status: {InsurenceStatus}</p>
+        <p className="insurance-status">Insurance Number: {InsurenceNo}</p>
         <p>Insurance Date: {String(InsurenceDate).split("-").reverse().join("-")}</p>
-
+        <div className="ButtonContainer">
         <div className="Button">
-          {InsurenceDocument && typeof InsurenceDocument === "string" ? (
-            <button className="download-btn">
-              <a href={InsurenceDocument} download={`${Name}_insurence_Copy`}>
-                Download Document
-              </a>
-            </button>
-          ) : (
-            <p>No document available</p>
-          )}
+          <button className="download-btn"><a href={InsurenceDocument} download={`${Name}_Insurence_Copey`}>DownLoadInsurenceDocument</a></button>
           <button onClick={handleRemove} className="download-btn">
             Remove Former
           </button>
+        </div>
+        <div className="Button">
+          <button className="download-btn"><a href={AdharDocumentFront} download={`${Name}_Adhar_Front_Pic`}>AdharFront Download</a></button>
+          <button  className="download-btn">
+          <a href={AdharDocumentBack} download={`${Name}_Adhar_Back_Pic`}>AdharBack Download</a>
+          </button>
+        </div>
+        <div className="Button">
+          <button className="download-btn"><a href={AavuFront} download={`${Name}_Cow_Front_Pic`}>Cow Front Pic</a></button>
+          <button onClick={handleRemove} className="download-btn">
+          <a href={AavuBack} download={`${Name}_Cow_Back_Pic`}>Cow Back</a>
+          </button>
+        </div>
+        <div className="Button">
+          <button className="download-btn"><a href={AavuRight} download={`${Name}_Cow_Right_Pic`}>Cow Right Pic</a></button>
+          <button onClick={handleRemove} className="download-btn">
+          <a href={AavuLeft} download={`${Name}_Cow_Left_Pic`}>Cow Left Pic</a>
+          </button>
+        </div>
         </div>
       </div>
     </div>

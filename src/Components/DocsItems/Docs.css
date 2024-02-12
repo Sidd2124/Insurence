@@ -14,8 +14,15 @@ button{
     
     margin: 10px;
 }
+a{
+    text-decoration: none;
+    color: white;
+}
 .Button{
     display: flex;
+    justify-content: space-between;
+    width: 100%;
+
 }
 .former-pic {
     width: 70px;
@@ -40,8 +47,8 @@ button{
 }
 
 .download-btn {
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 10px;
+    font-size: 13px;
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -53,6 +60,11 @@ button{
 .download-btn:hover {
     background-color: #0056b3;
     margin: 10px;
+}
+.ButtonContainer{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 /* Media query for responsiveness */

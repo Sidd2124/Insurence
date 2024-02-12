@@ -1,0 +1,23 @@
+{
+    "Users": [
+      {
+        "ImageURL": "blob:http://localhost:3004/553700dd-29e0-4485-96be-844f60639579",
+        "InsurenceDate": "2024-02-10",
+        "InsurenceDocument": "blob:http://localhost:3004/d48521a4-708d-449e-a6fe-b045a00e61dc",
+        "InsurenceStatus": "Active",
+        "Name": "Siddu",
+        "Number": "913984938493",
+        "id": "c43fd7f1-da33-46db-a440-037bcea8a8e5"
+      },
+      {
+        "ImageURL": "blob:http://localhost:3004/553700dd-29e0-4485-96be-844f60639579",
+        "InsurenceDate": "2024-02-10",
+        "InsurenceDocument": "blob:http://localhost:3004/d48521a4-708d-449e-a6fe-b045a00e61dc",
+        "InsurenceStatus": "Active",
+        "Name": "Siddu",
+        "Number": "913984938493",
+        "id": "c43fd7f1-da33-46db-a440-037bcea8a8e5"
+      }
+    ]
+  }
+  
