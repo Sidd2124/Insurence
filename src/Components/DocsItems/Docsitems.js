@@ -76,13 +76,13 @@ const DocsItem = ({ Info }) => {
         </div>
         <div className="Button">
           <button className="download-btn"><a href={AavuFront} download={`${Name}_Cow_Front_Pic`}>Cow Front Pic</a></button>
-          <button onClick={handleRemove} className="download-btn">
+          <button  className="download-btn">
           <a href={AavuBack} download={`${Name}_Cow_Back_Pic`}>Cow Back</a>
           </button>
         </div>
         <div className="Button">
           <button className="download-btn"><a href={AavuRight} download={`${Name}_Cow_Right_Pic`}>Cow Right Pic</a></button>
-          <button onClick={handleRemove} className="download-btn">
+          <button  className="download-btn">
           <a href={AavuLeft} download={`${Name}_Cow_Left_Pic`}>Cow Left Pic</a>
           </button>
         </div>
