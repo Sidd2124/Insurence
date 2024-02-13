@@ -24,47 +24,106 @@ const FormerEntry = (props) => {
     const[GoMathaLeft,SetGoMathaLeft]=useState()
     
     const { NewArray } = useContext(Context);
-
+console.log(ImageFile)
 
     const InsurenceNumber=(e)=>{
 SetFarmwrInsurenceNumber(e.target.value[0])
     }
 
 const CowFront=(e)=>{
-const CowFrontSetting=URL.createObjectURL(e.target.files[0])
-SetGoMathaFront(CowFrontSetting)
+
+    const file = e.target.files[0];
+
+    if (file) {
+   
+      const reader = new FileReader();
+      reader.onload = function(event) {
+      
+        SetGoMathaFront(event.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
 
 }
 const CowBack=(e)=>{
-    const CowBackSetting=URL.createObjectURL(e.target.files[0])
-    SetGoMathaBack(CowBackSetting)
+    
+    const file = e.target.files[0];
+
+    if (file) {
+   
+      const reader = new FileReader();
+      reader.onload = function(event) {
+      
+        SetGoMathaBack(event.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  
 
     
 }
 const CowRight=(e)=>{
-    
-    const CowRightSetting=URL.createObjectURL(e.target.files[0])
-    SetGomathaRight(CowRightSetting)
+    const file = e.target.files[0];
+
+    if (file) {
+   
+      const reader = new FileReader();
+      reader.onload = function(event) {
+      
+        SetGomathaRight(event.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+
 
     
 }
 const CowLeft=(e)=>{
     
-    const CowLeftSetting=URL.createObjectURL(e.target.files[0])
-    SetGoMathaLeft(CowLeftSetting)
+    const file = e.target.files[0];
+
+    if (file) {
+   
+      const reader = new FileReader();
+      reader.onload = function(event) {
+      
+        SetGoMathaLeft(event.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  
 
     
 }
    const AdharFront=(e)=>{
-const First=URL.createObjectURL(e.target.files[0])
+    const file = e.target.files[0];
 
-SetAdharOne(First)
+    if (file) {
+   
+      const reader = new FileReader();
+      reader.onload = function(event) {
+      
+        SetAdharOne(event.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+
+
 
    }
 
    const AdharBack=(e)=>{
-    const Second=URL.createObjectURL(e.target.files[0])
-    SetAdharTwo(Second)
+    const file = e.target.files[0];
+
+    if (file) {
+   
+      const reader = new FileReader();
+      reader.onload = function(event) {
+      
+        SetAdharTwo(event.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
    }
         
 
@@ -87,13 +146,31 @@ SetAdharOne(First)
   
 
     const UpdateDocument = (e) => {
-        const file = URL.createObjectURL(e.target.files[0])
-        setInsurenceDocument(file);
+        const file = e.target.files[0];
+
+        if (file) {
+       
+          const reader = new FileReader();
+          reader.onload = function(event) {
+          
+            setInsurenceDocument(event.target.result);
+          };
+          reader.readAsDataURL(file);
+        }
     };
 
     const UpdatePic = (e) => {
-        const file =URL.createObjectURL(e.target.files[0])
-        setImageFile(file);
+        const file = e.target.files[0];
+
+        if (file) {
+       
+          const reader = new FileReader();
+          reader.onload = function(event) {
+          
+            setImageFile(event.target.result);
+          };
+          reader.readAsDataURL(file);
+        }
     };
 
     const Submit = (event) => {
@@ -137,9 +214,9 @@ SetAdharOne(First)
             <Header/>
            
             <form onSubmit={Submit} className="form">
-                <h3>Enter Former Name</h3>
+                <h3>Enter Farmer Name</h3>
                 <input type='text' value={Name} onChange={UpdateName} placeholder="Former's Name" />
-                <h3>Upload Former Photo</h3>
+                <h3>Upload Farmer Photo</h3>
                 <input type="file" onChange={UpdatePic} />
                 <h3>Upload Insurance Document</h3>
                 <input type='file' onChange={UpdateDocument} />

@@ -55,7 +55,7 @@ const DocsItem = ({ Info }) => {
 
   return (
     <div className="responsive-container">
-      {ImageURL && <img src={ImageURL} alt="Former Pic" className="former-pic" />}
+      <img src={ImageURL} alt="Former Pic" className="former-pic" />
       <div className="details">
         <h1 className="former-name">{Name}</h1>
         <p className="former-number">Mobile Number: {Number}</p>
