@@ -1,9 +1,10 @@
 import PhoneInput from "react-phone-input-2";
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext,useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import './Forms.css'
 
 import Naresh from '../Logo.png';
+
 
 import Context from '../Context/Context'
 
@@ -22,13 +23,60 @@ const FormerEntry = (props) => {
     const[GomathBack,SetGoMathaBack]=useState()
     const[GomathaRight,SetGomathaRight]=useState()
     const[GoMathaLeft,SetGoMathaLeft]=useState()
+    const [FinellyDidIt,SetFinnely]=useState()
+    console.log(FinellyDidIt)
     
     const { NewArray } = useContext(Context);
-console.log(ImageFile)
 
     const InsurenceNumber=(e)=>{
 SetFarmwrInsurenceNumber(e.target.value[0])
     }
+
+    useEffect(() => {
+      fetchData();
+    }, []);
+  
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:4500/');
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const jsonData = await response.json();
+        SetFinnely(jsonData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    
+    const postData = async () => {
+      const data = {
+        Name: Name,
+        ImageFile: ImageFile,
+        InsurenceDocument: InsurenceDocument
+      };
+      try {
+        const response = await fetch('http://localhost:4500/Post', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+    
+        if (response.ok) {
+          console.log("Data posted successfully");
+        } else {
+          console.error('Failed to post data');
+        }
+    
+      } catch (error) {
+        console.error('Error posting data:', error);
+      }
+    };
+    
+
+    
 
 const CowFront=(e)=>{
 
@@ -162,15 +210,7 @@ const CowLeft=(e)=>{
     const UpdatePic = (e) => {
         const file = e.target.files[0];
 
-        if (file) {
-       
-          const reader = new FileReader();
-          reader.onload = function(event) {
-          
-            setImageFile(event.target.result);
-          };
-          reader.readAsDataURL(file);
-        }
+        setImageFile(URL.createObjectURL(file))
     };
 
     const Submit = (event) => {
@@ -212,9 +252,12 @@ const CowLeft=(e)=>{
         <div className="FormsTop"> 
             <img src={Naresh} alt="Company Logo" className="Ok"/>
             <Header/>
-           
+          
+           <button onClick={fetchData}>Testing</button>
+           <button onClick={postData}>PosttheData</button>
             <form onSubmit={Submit} className="form">
                 <h3>Enter Farmer Name</h3>
+                  
                 <input type='text' value={Name} onChange={UpdateName} placeholder="Former's Name" />
                 <h3>Upload Farmer Photo</h3>
                 <input type="file" onChange={UpdatePic} />
@@ -241,6 +284,7 @@ const CowLeft=(e)=>{
                 <PhoneInput country={"in"} value={Number} placeholder='Enter Former Contact Number' onChange={updatePhoneNumber} />
                 <button type='submit'>Submit</button>
             </form>
+
         </div>
     );
 };

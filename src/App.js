@@ -56,6 +56,8 @@ class App extends Component {
   render() {
     const { FirstArray, RemovedOnes } = this.state;
 
+    console.log(FirstArray)
+
    
 
     return (
