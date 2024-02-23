@@ -10,6 +10,7 @@ import Context from './Context/Context'
 
 const Details = () => {
   const { FinelArray } = useContext(Context)
+  console.log(FinelArray)
   const [PhoneNumber, setPhoneNumber] = useState("");
   const [FinellProducts, setFinelProducts] = useState([]);
   const [IsActive,SetActive]=useState(false)
@@ -57,7 +58,7 @@ const Details = () => {
       
       <Header />
       <img src={Naresh} alt="Company logo" className="logo" />
-      <button onClick={fetchProducts}>Refresh</button>
+      
       <input
         type='search'
         style={{ display: FinellProducts.length === 0 ? "none" : "block" }}

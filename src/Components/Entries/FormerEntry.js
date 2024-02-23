@@ -24,52 +24,14 @@ const FormerEntry = (props) => {
     const[GomathaRight,SetGomathaRight]=useState()
     const[GoMathaLeft,SetGoMathaLeft]=useState()
     
-    const [FinellProducts,SetFinelProducts]=useState([{ name: "Naresh", price: '70000' }])
-    console.log(FinellProducts)
     
     const { NewArray } = useContext(Context);
+    console.log(NewArray)
 
     const InsurenceNumber=(e)=>{
 SetFarmwrInsurenceNumber(e.target.value[0])
     }
 
-    const PostData = async event => {
-      event.preventDefault();
-    
-      try {
-        const response = await fetch('http://localhost:3004/products', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            Name:Name,
-      Number:Number,
-      ImageURL:ImageFile,
-      InsurenceDocument:InsurenceDocument,
-      InsurenceDate:Dates,
-      AdharDocumentFront:AdharOne,
-      AdharDocumentBack:AdharTwo,
-      InsurenceNo:FarmwrInsurenceNumber,
-      AavuFront:GoMathaFront,
-      AavuBack:GomathBack,
-      AavuRight:GomathaRight,
-      AavuLeft:GomathaRight 
-          }),
-        });
-    
-        if (response.ok) {
-          
-         console.log('Data Posted Successfully')
-          ; 
-        } else {
-          throw new Error('Failed to add product');
-        }
-      } catch (error) {
-        console.error('Error adding product:', error);
-      }
-    };
-    
    
     
     
@@ -271,9 +233,6 @@ const CowLeft=(e)=>{
             <img src={Naresh} alt="Company Logo" className="Ok"/>
             <Header/>
 
-            <button onClick={PostData}>
-            PostData
-            </button>
           
             <form onSubmit={Submit} className="form">
                 <h3>Enter Farmer Name</h3>
