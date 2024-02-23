@@ -11,19 +11,20 @@ app.use(cors());
 app.use(bodyParser.json({ limit: '50mb' }));
 
 const products = [
-  {id:"",
-    Name:"",
-    Number:"",
-    ImageURL:"",
-    InsurenceDocument:"",
-    InsurenceDate:"",
-    AdharDocumentFront:"",
-    AdharDocumentBack:"",
-    InsurenceNo:"",
-    AavuFront:"",
-    AavuBack:"",
-    AavuRight:"",
-    AavuLeft:""
+  {
+    id: "",
+    Name: "Naresh",
+    Number: "9959361690",
+    ImageURL: "https://i.ibb.co/mvp1pj3/Screenshot-2024-02-23-174428.png",
+    InsurenceDocument: "",
+    InsurenceDate: "",
+    AdharDocumentFront: "",
+    AdharDocumentBack: "",
+    InsurenceNo: "",
+    AavuFront: "",
+    AavuBack: "",
+    AavuRight: "",
+    AavuLeft: ""
   },
 ];
 
@@ -32,15 +33,17 @@ app.get('/products', (req, res) => {
 });
 
 app.post('/products', (req, res) => {
-  const {id, Name, Number, ImageURL, InsurenceDocument, InsurenceDate, AdharDocumentFront, AdharDocumentBack, InsurenceNo, AavuFront, AavuBack, AavuRight, AavuLeft } = req.body;
-  
+  const { id, Name, Number, ImageURL, InsurenceDocument, InsurenceDate, AdharDocumentFront, AdharDocumentBack, InsurenceNo, AavuFront, AavuBack, AavuRight, AavuLeft } = req.body;
+
   const newProduct = { id, Name, Number, ImageURL, InsurenceDocument, InsurenceDate, AdharDocumentFront, AdharDocumentBack, InsurenceNo, AavuFront, AavuBack, AavuRight, AavuLeft };
   products.push(newProduct);
-  
+
   res.status(201).json({ message: 'Product added successfully', product: newProduct });
 });
 
-const PORT = 3004;
-app.listen(PORT, () => {
+// Listen on all network interfaces
+const PORT = process.env.PORT || 3004; // Use the provided PORT environment variable or default to 3004
+const HOST = '0.0.0.0'; // Listen on all network interfaces
+app.listen(PORT, HOST, () => {
   console.log(`Server is running on port ${PORT}`);
 });
