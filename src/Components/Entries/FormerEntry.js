@@ -246,7 +246,7 @@ const CowLeft=(e)=>{
         AavuFront:GoMathaFront,
         AavuBack:GomathBack,
         AavuRight:GomathaRight,
-        AavuLeft:GomathaRight 
+        AavuLeft:GoMathaLeft
             }),
           });
       
