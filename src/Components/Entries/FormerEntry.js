@@ -1,5 +1,5 @@
 import PhoneInput from "react-phone-input-2";
-import React, { useState, useContext,useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import './Forms.css'
 
@@ -23,8 +23,10 @@ const FormerEntry = (props) => {
     const[GomathBack,SetGoMathaBack]=useState()
     const[GomathaRight,SetGomathaRight]=useState()
     const[GoMathaLeft,SetGoMathaLeft]=useState()
-    const [FinellyDidIt,SetFinnely]=useState()
-    console.log(FinellyDidIt)
+    const [newProduct, ] = useState({ name: 'Thala DhoniSiddu', price: '70000' });
+    const [FinellProducts,SetFinelProducts]=useState([{ name: 'Thala DhoniSiddu', price: '70000' }])
+   console.log(FinellProducts)
+    
     
     const { NewArray } = useContext(Context);
 
@@ -32,52 +34,52 @@ const FormerEntry = (props) => {
 SetFarmwrInsurenceNumber(e.target.value[0])
     }
 
-    useEffect(() => {
-      fetchData();
-    }, []);
-  
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:4500/');
-        if (!response.ok) {
-          throw new Error('Failed to fetch data');
-        }
-        const jsonData = await response.json();
-        SetFinnely(jsonData);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
+    const PostData = async event => {
+      event.preventDefault();
     
-    const postData = async () => {
-      const data = {
-        Name: Name,
-        ImageFile: ImageFile,
-        InsurenceDocument: InsurenceDocument
-      };
       try {
-        const response = await fetch('http://localhost:4500/Post', {
+        const response = await fetch('http://localhost:3004/products', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
           },
-          body: JSON.stringify(data)
+          body: JSON.stringify(newProduct),
         });
     
         if (response.ok) {
-          console.log("Data posted successfully");
+         
+          handleSubmit(); 
         } else {
-          console.error('Failed to post data');
+          throw new Error('Failed to add product');
         }
-    
       } catch (error) {
-        console.error('Error posting data:', error);
+        console.error('Error adding product:', error);
       }
     };
     
-
+    const handleSubmit = async () => {
+      try {
+        const response = await fetch('http://localhost:3004/products', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
     
-
+        if (response.ok) {
+          const products = await response.json();
+          SetFinelProducts(products)
+        } else {
+          throw new Error('Failed to fetch products');
+        }
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+    
+    
+  
+    
 const CowFront=(e)=>{
 
     const file = e.target.files[0];
@@ -252,9 +254,12 @@ const CowLeft=(e)=>{
         <div className="FormsTop"> 
             <img src={Naresh} alt="Company Logo" className="Ok"/>
             <Header/>
+
+            <button onClick={PostData}>
+            PostData
+            </button>
           
-           <button onClick={fetchData}>Testing</button>
-           <button onClick={postData}>PosttheData</button>
+          <button onClick={handleSubmit}>Submit</button>
             <form onSubmit={Submit} className="form">
                 <h3>Enter Farmer Name</h3>
                   
@@ -284,6 +289,10 @@ const CowLeft=(e)=>{
                 <PhoneInput country={"in"} value={Number} placeholder='Enter Former Contact Number' onChange={updatePhoneNumber} />
                 <button type='submit'>Submit</button>
             </form>
+{FinellProducts.map((each)=><div>
+  <p>{each.name}</p>
+  <p>{each.price}</p>
+</div>)}
 
         </div>
     );
