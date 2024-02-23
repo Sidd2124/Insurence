@@ -23,10 +23,9 @@ const FormerEntry = (props) => {
     const[GomathBack,SetGoMathaBack]=useState()
     const[GomathaRight,SetGomathaRight]=useState()
     const[GoMathaLeft,SetGoMathaLeft]=useState()
-    const [newProduct, ] = useState({ name: 'Thala DhoniSiddu', price: '70000' });
-    const [FinellProducts,SetFinelProducts]=useState([{ name: 'Thala DhoniSiddu', price: '70000' }])
-   console.log(FinellProducts)
     
+    const [FinellProducts,SetFinelProducts]=useState([{ name: "Naresh", price: '70000' }])
+    console.log(FinellProducts)
     
     const { NewArray } = useContext(Context);
 
@@ -43,12 +42,26 @@ SetFarmwrInsurenceNumber(e.target.value[0])
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(newProduct),
+          body: JSON.stringify({
+            Name:Name,
+      Number:Number,
+      ImageURL:ImageFile,
+      InsurenceDocument:InsurenceDocument,
+      InsurenceDate:Dates,
+      AdharDocumentFront:AdharOne,
+      AdharDocumentBack:AdharTwo,
+      InsurenceNo:FarmwrInsurenceNumber,
+      AavuFront:GoMathaFront,
+      AavuBack:GomathBack,
+      AavuRight:GomathaRight,
+      AavuLeft:GomathaRight 
+          }),
         });
     
         if (response.ok) {
-         
-          handleSubmit(); 
+          
+         console.log('Data Posted Successfully')
+          ; 
         } else {
           throw new Error('Failed to add product');
         }
@@ -57,25 +70,7 @@ SetFarmwrInsurenceNumber(e.target.value[0])
       }
     };
     
-    const handleSubmit = async () => {
-      try {
-        const response = await fetch('http://localhost:3004/products', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-    
-        if (response.ok) {
-          const products = await response.json();
-          SetFinelProducts(products)
-        } else {
-          throw new Error('Failed to fetch products');
-        }
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      }
-    };
+   
     
     
   
@@ -193,29 +188,34 @@ const CowLeft=(e)=>{
         setName(e.target.value);
     };
 
-  
-
     const UpdateDocument = (e) => {
-        const file = e.target.files[0];
+      const file = e.target.files[0];
+      if (file) {
+   
+        const reader = new FileReader();
+        reader.onload = function(event) {
+        
+          setInsurenceDocument(event.target.result);
+        };
+        reader.readAsDataURL(file);
+      }
+    };
+        
 
+    const UpdatePic = (e) => {
+        const file = e.target.files[0];
         if (file) {
-       
+   
           const reader = new FileReader();
           reader.onload = function(event) {
           
-            setInsurenceDocument(event.target.result);
+            setImageFile(event.target.result);
           };
           reader.readAsDataURL(file);
         }
     };
 
-    const UpdatePic = (e) => {
-        const file = e.target.files[0];
-
-        setImageFile(URL.createObjectURL(file))
-    };
-
-    const Submit = (event) => {
+    const Submit =async (event) => {
         event.preventDefault();
         if (Name === "" || Number === "") {
             alert("Please Fill all the Details");
@@ -227,23 +227,39 @@ const CowLeft=(e)=>{
         
 
         
-    
-        NewArray({
-            id: id,
-            Name: Name,
-            Number: Number,
-            ImageURL: ImageFile,
-            InsurenceDocument: InsurenceDocument,
-            InsurenceDate: Dates,
-            AdharDocumentFront:AdharOne,
-            AdharDocumentBack:AdharTwo,
-            InsurenceNo:FarmwrInsurenceNumber,
-            AavuFront:GoMathaFront,
-            AavuBack:GomathBack,
-            AavuRight:GomathaRight,
-            AavuLeft:GoMathaLeft
-
-        });
+        try {
+          const response = await fetch('http://localhost:3004/products', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              id:id,
+              Name:Name,
+        Number:Number,
+        ImageURL:ImageFile,
+        InsurenceDocument:InsurenceDocument,
+        InsurenceDate:Dates,
+        AdharDocumentFront:AdharOne,
+        AdharDocumentBack:AdharTwo,
+        InsurenceNo:FarmwrInsurenceNumber,
+        AavuFront:GoMathaFront,
+        AavuBack:GomathBack,
+        AavuRight:GomathaRight,
+        AavuLeft:GomathaRight 
+            }),
+          });
+      
+          if (response.ok) {
+            
+           console.log('Data Posted Successfully')
+            ; 
+          } else {
+            throw new Error('Failed to add product');
+          }
+        } catch (error) {
+          console.error('Error adding product:', error);
+        }
     
         const { history } = props;
         history.push("/");
@@ -259,7 +275,6 @@ const CowLeft=(e)=>{
             PostData
             </button>
           
-          <button onClick={handleSubmit}>Submit</button>
             <form onSubmit={Submit} className="form">
                 <h3>Enter Farmer Name</h3>
                   
@@ -289,10 +304,7 @@ const CowLeft=(e)=>{
                 <PhoneInput country={"in"} value={Number} placeholder='Enter Former Contact Number' onChange={updatePhoneNumber} />
                 <button type='submit'>Submit</button>
             </form>
-{FinellProducts.map((each)=><div>
-  <p>{each.name}</p>
-  <p>{each.price}</p>
-</div>)}
+
 
         </div>
     );
