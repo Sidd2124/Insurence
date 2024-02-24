@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import "./Docs.css";
 import Context from "../Context/Context";
 
-const DocsItem = ({ Info }) => {
+const DocsItem = (props) => {
+  const { Info,Eraise }=props
   const {
     Name,
     Number,
@@ -23,19 +24,11 @@ const DocsItem = ({ Info }) => {
 
   const handleRemove = () => {
     FinelRemove(id);
+    Eraise(id)
     RemoveingKarshak({
       Name,
       Number,
-      ImageURL,
-      InsurenceDocument,
       InsurenceDate,
-      AdharDocumentFront,
-      AdharDocumentBack,
-      InsurenceNo,
-      AavuFront,
-      AavuBack,
-      AavuRight,
-      AavuLeft
     });
   };
 
@@ -46,6 +39,12 @@ const DocsItem = ({ Info }) => {
 
   if (currentDate > oneYearFromInsurenceDate) {
     FinelRemove(id); 
+    RemoveingKarshak({
+      Name,
+      Number,
+      InsurenceDate,
+    });
+    
   }
 
 

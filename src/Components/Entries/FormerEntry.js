@@ -1,12 +1,11 @@
 import PhoneInput from "react-phone-input-2";
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import './Forms.css'
 
 import Naresh from '../Logo.png';
 
 
-import Context from '../Context/Context'
 
 import Header from '../Header/Header'
 
@@ -25,7 +24,6 @@ const FormerEntry = (props) => {
     const[GoMathaLeft,SetGoMathaLeft]=useState()
     
     
-    const { NewArray } = useContext(Context);
     
 
     const InsurenceNumber=(e)=>{

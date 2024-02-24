@@ -1,6 +1,10 @@
+
+
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+
+
 
 const app = express();
 
@@ -14,13 +18,13 @@ const products = [
   {
     id: "",
     Name: "Naresh",
-    Number: "",
-    ImageURL: "",
+    Number: "9666841615",
+    ImageURL: "https://i.ibb.co/4dcxwgY/Screenshot-2024-02-23-174428.png",
     InsurenceDocument: "",
-    InsurenceDate: "",
+    InsurenceDate: "07/07/2023",
     AdharDocumentFront: "",
     AdharDocumentBack: "",
-    InsurenceNo: "",
+    InsurenceNo: "001",
     AavuFront: "",
     AavuBack: "",
     AavuRight: "",

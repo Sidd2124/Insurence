@@ -12,9 +12,31 @@ const Details = () => {
   const { FinelArray } = useContext(Context)
   console.log(FinelArray)
   const [PhoneNumber, setPhoneNumber] = useState("");
-  const [FinellProducts, setFinelProducts] = useState([]);
+  const [FinellProducts, setFinelProducts] = useState([ {
+    id: "",
+    Name: "Naresh",
+    Number: "",
+    ImageURL: "https://i.ibb.co/4dcxwgY/Screenshot-2024-02-23-174428.png",
+    InsurenceDocument: "",
+    InsurenceDate: "",
+    AdharDocumentFront: "",
+    AdharDocumentBack: "",
+    InsurenceNo: "",
+    AavuFront: "",
+    AavuBack: "",
+    AavuRight: "",
+    AavuLeft: ""
+  }]);
   const [IsActive,SetActive]=useState(false)
   console.log(FinelArray)
+
+
+  const OperationEraise=(J)=>{
+const Operation=FinellProducts.filter((each)=>each.id!==J)
+
+setFinelProducts(Operation)
+
+  }
 
   const fetchProducts = async () => {
     try {
@@ -81,7 +103,7 @@ const Details = () => {
 {IsActive ?   (
   <div>
     {filteredProducts.map((product, index) => (
-      <DocsItem key={index} Info={product} />
+      <DocsItem key={index} Info={product} Eraise={OperationEraise} />
     ))}
   </div>
 ):(
