@@ -20,7 +20,6 @@ const DocsItem = ({ Info }) => {
   } = Info;
   const { FinelRemove, RemoveingKarshak } = useContext(Context);
 
-  console.log(ImageURL)
 
   const handleRemove = () => {
     FinelRemove(id);

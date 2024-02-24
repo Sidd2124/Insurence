@@ -14,8 +14,8 @@ const products = [
   {
     id: "",
     Name: "Naresh",
-    Number: "9959361690",
-    ImageURL: "https://i.ibb.co/mvp1pj3/Screenshot-2024-02-23-174428.png",
+    Number: "",
+    ImageURL: "",
     InsurenceDocument: "",
     InsurenceDate: "",
     AdharDocumentFront: "",
@@ -42,8 +42,7 @@ app.post('/products', (req, res) => {
 });
 
 // Listen on all network interfaces
-const PORT = process.env.PORT; // Use the provided PORT environment variable or default to 3004
-const HOST = '0.0.0.0'; // Listen on all network interfaces
-app.listen(PORT, HOST, () => {
+const PORT = process.env.PORT || 3005; // Use the provided PORT environment variable or default to 3005
+app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

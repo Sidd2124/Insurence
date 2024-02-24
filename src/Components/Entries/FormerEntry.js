@@ -26,7 +26,7 @@ const FormerEntry = (props) => {
     
     
     const { NewArray } = useContext(Context);
-    console.log(NewArray)
+    
 
     const InsurenceNumber=(e)=>{
 SetFarmwrInsurenceNumber(e.target.value[0])
@@ -190,7 +190,7 @@ const CowLeft=(e)=>{
 
         
         try {
-          const response = await fetch('http://localhost:3004/products', {
+          const response = await fetch('http://localhost:3005/products', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

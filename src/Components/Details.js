@@ -14,10 +14,11 @@ const Details = () => {
   const [PhoneNumber, setPhoneNumber] = useState("");
   const [FinellProducts, setFinelProducts] = useState([]);
   const [IsActive,SetActive]=useState(false)
+  console.log(FinelArray)
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('http://localhost:3004/products', {
+      const response = await fetch('http://localhost:3005/products', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
