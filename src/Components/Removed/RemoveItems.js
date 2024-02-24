@@ -27,7 +27,7 @@ const Removes = () => {
             <img src={Naresh} alt="Company logo" className="logo" />
             
       
-
+<h1>Removed Farmer's</h1>
          
          
        {RemovedFarmers.length===0&&<p>No Farmers Removed Yet😉</p>}
