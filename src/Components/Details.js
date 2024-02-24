@@ -40,24 +40,25 @@ setFinelProducts(Operation)
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('https://node-express-vercel-ashen-five.vercel.app/products', {
+      const response = await fetch('https://node-express-vercel-indol-delta.vercel.app/products', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
       });
-
-      if (response.ok) {
+  
+      if (response.status === 200) {
         const products = await response.json();
         setFinelProducts(products);
-        SetActive(true)
+        SetActive(true);
       } else {
-        throw new Error('Failed to fetch products');
+        throw new Error('Failed to fetch products. Status: ' + response.status);
       }
     } catch (error) {
       console.error('Error fetching products:', error);
     }
   };
+  
 
   useEffect(() => {
     fetchProducts();

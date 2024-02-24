@@ -7,7 +7,7 @@ const DocsItem = (props) => {
   const {
     name,
     Number,
-    InsurenceDocument,
+    insurenceDocument,
     InsurenceDate,
     imageURL,
     id,
@@ -63,7 +63,7 @@ const DocsItem = (props) => {
         <p>Insurance Date: {String(InsurenceDate).split("-").reverse().join("-")}</p>
         <div className="ButtonContainer">
         <div className="Button">
-          <button className="download-btn"><a href={InsurenceDocument} download={`${name}_Insurence_Copey`}>DownLoadInsurenceDocument</a></button>
+          <button className="download-btn"><a href={insurenceDocument} download={`${name}_Insurence_Copey`}>DownLoadInsurenceDocument</a></button>
           <button onClick={handleRemove} className="download-btn">
             Remove Former
           </button>

@@ -22,8 +22,9 @@ const FormerEntry = (props) => {
     const[GomathBack,SetGoMathaBack]=useState()
     const[GomathaRight,SetGomathaRight]=useState()
     const[GoMathaLeft,SetGoMathaLeft]=useState()
+    const[IsPosting,SetIsPosting]=useState(true)
     
-    
+    console.log(InsurenceDocument)
     
 
     const InsurenceNumber=(e)=>{
@@ -177,6 +178,7 @@ const CowLeft=(e)=>{
 
     const Submit =async (event) => {
         event.preventDefault();
+        SetIsPosting(false)
         if (Name === "" || Number === "") {
             alert("Please Fill all the Details");
             return;
@@ -188,7 +190,7 @@ const CowLeft=(e)=>{
 
         
         try {
-          const response = await fetch('https://node-express-vercel-ashen-five.vercel.app/products', {
+          const response = await fetch('https://node-express-vercel-indol-delta.vercel.app/products', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -198,7 +200,10 @@ const CowLeft=(e)=>{
               name:Name,
              number:Number,
         imageURL:ImageFile,
-        insurenceDocument:InsurenceDocument,
+        
+insuranceDocument:InsurenceDocument,
+        
+
         insurenceDate:Dates,
         adharDocumentFront:AdharOne,
         adharDocumentBack:AdharTwo,
@@ -213,6 +218,9 @@ const CowLeft=(e)=>{
           if (response.ok) {
             
            console.log('Data Posted Successfully')
+           
+           const { history } = props;
+        history.push("/");
             ; 
           } else {
             throw new Error('Failed to add product');
@@ -221,8 +229,7 @@ const CowLeft=(e)=>{
           console.error('Error adding product:', error);
         }
     
-        const { history } = props;
-        history.push("/");
+        
     };
     
 
@@ -230,8 +237,7 @@ const CowLeft=(e)=>{
         <div className="FormsTop"> 
             <img src={Naresh} alt="Company Logo" className="Ok"/>
             <Header/>
-
-          
+{IsPosting===false?<h3>New Farmer Adding</h3>:
             <form onSubmit={Submit} className="form">
                 <h3>Enter Farmer Name</h3>
                   
@@ -260,7 +266,8 @@ const CowLeft=(e)=>{
                 <h3>Former Contact </h3>
                 <PhoneInput country={"in"} value={Number} placeholder='Enter Former Contact Number' onChange={updatePhoneNumber} />
                 <button type='submit'>Submit</button>
-            </form>
+            </form>}
+          
 
 
         </div>
