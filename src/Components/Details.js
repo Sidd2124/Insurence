@@ -28,7 +28,7 @@ const Details = () => {
     AavuLeft: ""
   }]);
   const [IsActive,SetActive]=useState(false)
-  console.log(FinelArray)
+  console.log(FinellProducts)
 
 
   const OperationEraise=(J)=>{
@@ -40,7 +40,7 @@ setFinelProducts(Operation)
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('http://localhost:3005/products', {
+      const response = await fetch('https://node-express-vercel-ashen-five.vercel.app/products', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

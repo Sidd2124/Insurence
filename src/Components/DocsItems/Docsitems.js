@@ -5,11 +5,11 @@ import Context from "../Context/Context";
 const DocsItem = (props) => {
   const { Info,Eraise }=props
   const {
-    Name,
+    name,
     Number,
     InsurenceDocument,
     InsurenceDate,
-    ImageURL,
+    imageURL,
     id,
     AdharDocumentFront,
     AdharDocumentBack,
@@ -26,7 +26,7 @@ const DocsItem = (props) => {
     FinelRemove(id);
     Eraise(id)
     RemoveingKarshak({
-      Name,
+      name,
       Number,
       InsurenceDate,
     });
@@ -40,7 +40,7 @@ const DocsItem = (props) => {
   if (currentDate > oneYearFromInsurenceDate) {
     FinelRemove(id); 
     RemoveingKarshak({
-      Name,
+      name,
       Number,
       InsurenceDate,
     });
@@ -55,35 +55,35 @@ const DocsItem = (props) => {
 
   return (
     <div className="responsive-container">
-      <img src={ImageURL} alt="Former Pic" className="former-pic" />
+      <img src={imageURL} alt="Former" className="former-pic" />
       <div className="details">
-        <h1 className="former-name">{Name}</h1>
+        <h1 className="former-name">{name}</h1>
         <p className="former-number">Mobile Number: {Number}</p>
         <p className="insurance-status">Insurance Number: {InsurenceNo}</p>
         <p>Insurance Date: {String(InsurenceDate).split("-").reverse().join("-")}</p>
         <div className="ButtonContainer">
         <div className="Button">
-          <button className="download-btn"><a href={InsurenceDocument} download={`${Name}_Insurence_Copey`}>DownLoadInsurenceDocument</a></button>
+          <button className="download-btn"><a href={InsurenceDocument} download={`${name}_Insurence_Copey`}>DownLoadInsurenceDocument</a></button>
           <button onClick={handleRemove} className="download-btn">
             Remove Former
           </button>
         </div>
         <div className="Button">
-          <button className="download-btn"><a href={AdharDocumentFront} download={`${Name}_Adhar_Front_Pic`}>AdharFront Download</a></button>
+          <button className="download-btn"><a href={AdharDocumentFront} download={`${name}_Adhar_Front_Pic`}>AdharFront Download</a></button>
           <button  className="download-btn">
-          <a href={AdharDocumentBack} download={`${Name}_Adhar_Back_Pic`}>AdharBack Download</a>
+          <a href={AdharDocumentBack} download={`${name}_Adhar_Back_Pic`}>AdharBack Download</a>
           </button>
         </div>
         <div className="Button">
-          <button className="download-btn"><a href={AavuFront} download={`${Name}_Cow_Front_Pic`}>Cow Front Pic</a></button>
+          <button className="download-btn"><a href={AavuFront} download={`${name}_Cow_Front_Pic`}>Cow Front Pic</a></button>
           <button  className="download-btn">
-          <a href={AavuBack} download={`${Name}_Cow_Back_Pic`}>Cow Back</a>
+          <a href={AavuBack} download={`${name}_Cow_Back_Pic`}>Cow Back</a>
           </button>
         </div>
         <div className="Button">
-          <button className="download-btn"><a href={AavuRight} download={`${Name}_Cow_Right_Pic`}>Cow Right Pic</a></button>
+          <button className="download-btn"><a href={AavuRight} download={`${name}_Cow_Right_Pic`}>Cow Right Pic</a></button>
           <button  className="download-btn">
-          <a href={AavuLeft} download={`${Name}_Cow_Left_Pic`}>Cow Left Pic</a>
+          <a href={AavuLeft} download={`${name}_Cow_Left_Pic`}>Cow Left Pic</a>
           </button>
         </div>
         </div>

@@ -188,25 +188,25 @@ const CowLeft=(e)=>{
 
         
         try {
-          const response = await fetch('http://localhost:3005/products', {
+          const response = await fetch('https://node-express-vercel-ashen-five.vercel.app/products', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
               id:id,
-              Name:Name,
-        Number:Number,
-        ImageURL:ImageFile,
-        InsurenceDocument:InsurenceDocument,
-        InsurenceDate:Dates,
-        AdharDocumentFront:AdharOne,
-        AdharDocumentBack:AdharTwo,
-        InsurenceNo:FarmwrInsurenceNumber,
-        AavuFront:GoMathaFront,
-        AavuBack:GomathBack,
-        AavuRight:GomathaRight,
-        AavuLeft:GoMathaLeft
+              name:Name,
+             number:Number,
+        imageURL:ImageFile,
+        insurenceDocument:InsurenceDocument,
+        insurenceDate:Dates,
+        adharDocumentFront:AdharOne,
+        adharDocumentBack:AdharTwo,
+        insurenceNo:FarmwrInsurenceNumber,
+        aavuFront:GoMathaFront,
+        aavuBack:GomathBack,
+        aavuRight:GomathaRight,
+        aavuLeft:GoMathaLeft
             }),
           });
       
