@@ -190,7 +190,7 @@ const CowLeft=(e)=>{
 
         
         try {
-          const response = await fetch('https://node-express-vercel-indol-delta.vercel.app/products', {
+          const response = await fetch('https://node-express-vercel-alpha-liard.vercel.app/products', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
