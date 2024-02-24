@@ -41,8 +41,11 @@ app.post('/products', (req, res) => {
   res.status(201).json({ message: 'Product added successfully', product: newProduct });
 });
 
-// Listen on all network interfaces
-const PORT = process.env.PORT || 3005; // Use the provided PORT environment variable or default to 3005
-app.listen(PORT, () => {
+
+
+const PORT = process.env.PORT || 3005;
+const HOST = '0.0.0.0'; // Listen on all network interfaces
+
+app.listen(PORT, HOST, () => {
   console.log(`Server is running on port ${PORT}`);
 });
