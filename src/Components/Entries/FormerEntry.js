@@ -192,7 +192,7 @@ const CowLeft=(e)=>{
 
         
         try {
-          const response = await fetch('https://node-express-vercel-kkwr.vercel.app/products', {
+          const response = await fetch('https://node-express-vercel-sigma-ruddy.vercel.app/products', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

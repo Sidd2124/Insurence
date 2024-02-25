@@ -42,7 +42,7 @@ setFinelProducts(Operation)
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('https://node-express-vercel-kkwr.vercel.app/products', {
+      const response = await fetch('https://node-express-vercel-sigma-ruddy.vercel.app/products', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
