@@ -11,6 +11,16 @@
     overflow: auto;
     height: 100vh;
   }
+.Adding{
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: center; /* center vertically */
+  flex-direction: column;
+  text-align: center;
+  width: 300px;
+  border-radius: 6px;
+  text-align: center;
+}
   .Ok{
     height: 120px;
   }

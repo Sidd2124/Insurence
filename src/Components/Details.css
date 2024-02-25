@@ -1,0 +1,26 @@
+/* CSS for typing animation */
+@keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  /* CSS for blinking cursor */
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+  
+  .Typing {
+    overflow: hidden; /* Ensures the text is not visible until typing animation starts */
+    border-right: 0.15em solid orange; /* Simulates the blinking cursor */
+    white-space: nowrap; /* Prevents text from wrapping */
+    margin: 0 auto; /* Centers the text horizontally */
+    letter-spacing: 0.15em; /* Adjust spacing between letters */
+    animation: typing 5s steps(30, end), blink 1s step-end infinite;
+  }
+  

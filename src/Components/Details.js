@@ -8,6 +8,8 @@ import './styles.css';
 import Header from '../Components/Header/Header'
 import Context from './Context/Context'
 
+import './Details.css'
+
 const Details = () => {
   const { FinelArray } = useContext(Context)
   console.log(FinelArray)
@@ -108,7 +110,7 @@ setFinelProducts(Operation)
     ))}
   </div>
 ):(
-  <h1>Farmers List Loading....</h1>
+  <h1 className="Typing">Farmers List Loading....</h1>
 )}
 
           

@@ -5,7 +5,7 @@ import './Forms.css'
 
 import Naresh from '../Logo.png';
 
-
+import ClimbingBoxLoader from 'react-spinners/ClimbingBoxLoader'
 
 import Header from '../Header/Header'
 
@@ -236,7 +236,11 @@ const CowLeft=(e)=>{
         <div className="FormsTop"> 
             <img src={Naresh} alt="Company Logo" className="Ok"/>
             <Header/>
-{IsPosting===false?<h3>New Farmer Adding</h3>:
+{IsPosting===false?<div className="Adding">
+<ClimbingBoxLoader color="#36d7b7" />
+<h3 className="Typing">New Farmer Adding......</h3>
+
+</div>:
             <form onSubmit={Submit} className="form">
                 <h3>Enter Farmer Name</h3>
                   
