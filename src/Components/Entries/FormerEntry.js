@@ -25,6 +25,8 @@ const FormerEntry = (props) => {
     const[IsPosting,SetIsPosting]=useState(true)
     
     console.log(InsurenceDocument)
+
+    
     
 
     const InsurenceNumber=(e)=>{
@@ -190,28 +192,25 @@ const CowLeft=(e)=>{
 
         
         try {
-          const response = await fetch('https://node-express-vercel-alpha-liard.vercel.app/products', {
+          const response = await fetch('https://node-express-vercel-kkwr.vercel.app/products', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
               id:id,
-              name:Name,
-             number:Number,
-        imageURL:ImageFile,
-        
-insuranceDocument:InsurenceDocument,
-        
-
-        insurenceDate:Dates,
-        adharDocumentFront:AdharOne,
-        adharDocumentBack:AdharTwo,
-        insurenceNo:FarmwrInsurenceNumber,
-        aavuFront:GoMathaFront,
-        aavuBack:GomathBack,
-        aavuRight:GomathaRight,
-        aavuLeft:GoMathaLeft
+              Name:Name,
+             Number:Number,
+        ImageURL:ImageFile,
+        ImageFilensuranceDocument:InsurenceDocument,
+        InsurenceDate:Dates,
+        AdharDocumentFront:AdharOne,
+        AdharDocumentBack:AdharTwo,
+        InsurenceNo:FarmwrInsurenceNumber,
+        AavuFront:GoMathaFront,
+        AavuBack:GomathBack,
+        AavuRight:GomathaRight,
+        AavuLeft:GoMathaLeft
             }),
           });
       
