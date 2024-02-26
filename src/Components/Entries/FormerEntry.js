@@ -24,13 +24,13 @@ const FormerEntry = (props) => {
     const[GoMathaLeft,SetGoMathaLeft]=useState()
     const[IsPosting,SetIsPosting]=useState(true)
     
-    console.log(InsurenceDocument)
-
     
+
+    console.log(Dates)
     
 
     const InsurenceNumber=(e)=>{
-SetFarmwrInsurenceNumber(e.target.value[0])
+SetFarmwrInsurenceNumber(e.target.value)
     }
 
    
@@ -167,6 +167,7 @@ const CowLeft=(e)=>{
 
     const UpdatePic = (e) => {
         const file = e.target.files[0];
+        
         if (file) {
    
           const reader = new FileReader();
@@ -176,60 +177,58 @@ const CowLeft=(e)=>{
           };
           reader.readAsDataURL(file);
         }
+       
     };
 
-    const Submit =async (event) => {
-        event.preventDefault();
-        SetIsPosting(false)
-        if (Name === "" || Number === "") {
-            alert("Please Fill all the Details");
-            return;
-        }
-    
-        const id = uuidv4();
-        
-        
+    const Submit = async (event) => {
+      event.preventDefault();
 
-        
-        try {
-          const response = await fetch('https://node-express-vercel-sigma-ruddy.vercel.app/products', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              id:id,
-              Name:Name,
-             Number:Number,
-        ImageURL:ImageFile,
-        ImageFilensuranceDocument:InsurenceDocument,
-        InsurenceDate:Dates,
-        AdharDocumentFront:AdharOne,
-        AdharDocumentBack:AdharTwo,
-        InsurenceNo:FarmwrInsurenceNumber,
-        AavuFront:GoMathaFront,
-        AavuBack:GomathBack,
-        AavuRight:GomathaRight,
-        AavuLeft:GoMathaLeft
-            }),
+      if(Name===""||Number===""){
+alert("Enter Valide Name/Number")
+      }
+      SetIsPosting(false);
+  
+      const id = uuidv4();
+  
+      try {
+          const response = await fetch('http://localhost:3020/api', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },  
+              body: JSON.stringify({
+                  id: id,
+                  Name: Name,
+                  Number: Number,
+                  ImageURL: ImageFile,
+                  InsuranceDate: Dates,
+                  InsuranceDocument: InsurenceDocument,
+                  AdharDocumentFront: AdharOne,
+                  AdharDocumentBack: AdharTwo,
+                  InsurenceNo: FarmwrInsurenceNumber,
+                  AavuFront: GoMathaFront,
+                  AavuBack: GomathBack,
+                  AavuRight: GomathaRight,
+                  AavuLeft: GoMathaLeft
+                
+                  
+              }),
           });
-      
+  
           if (response.ok) {
-            
-           console.log('Data Posted Successfully')
-           
-           const { history } = props;
-        history.push("/");
-            ; 
+              console.log('Data Posted Successfully');
+              const { history } = props;
+              history.push("/");
           } else {
-            throw new Error('Failed to add product');
+              throw new Error('Failed to add product');
           }
-        } catch (error) {
+      } catch (error) {
           console.error('Error adding product:', error);
-        }
-    
-        
-    };
+          SetIsPosting(true); // Set IsPosting back to true in case of an error
+      }
+  };
+  
+  
     
 
     return (
@@ -246,7 +245,7 @@ const CowLeft=(e)=>{
                   
                 <input type='text' value={Name} onChange={UpdateName} placeholder="Former's Name" />
                 <h3>Upload Farmer Photo</h3>
-                <input type="file" onChange={UpdatePic} />
+                <input type="file"  onChange={UpdatePic} />
                 <h3>Upload Insurance Document</h3>
                 <input type='file' onChange={UpdateDocument} />
                 <h3>Upload Adhar Front Side</h3>
@@ -262,10 +261,11 @@ const CowLeft=(e)=>{
                 <h3>Cow Right Side Photo</h3>
                 <input type='file' onChange={CowRight} />
                 <h3>Insurence Tag Number</h3>
-                <input type='tel' onChange={InsurenceNumber} placeholder="Enter Tag No" />
+                <input type='text' onChange={InsurenceNumber} placeholder="Enter Tag No" />
                 <h3>Insurence Date</h3>
-
-                <input onChange={UpdateDate} type="date"/>
+<h1>Sidd</h1>
+                <input  onChange={UpdateDate} type="date"/>
+             
                 <h3>Former Contact </h3>
                 <PhoneInput country={"in"} value={Number} placeholder='Enter Former Contact Number' onChange={updatePhoneNumber} />
                 <button type='submit'>Submit</button>

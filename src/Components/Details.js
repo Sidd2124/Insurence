@@ -13,6 +13,7 @@ import './Details.css'
 const Details = () => {
   const { FinelArray } = useContext(Context)
   console.log(FinelArray)
+  
   const [PhoneNumber, setPhoneNumber] = useState("");
   const [FinellProducts, setFinelProducts] = useState([ {
     id: "",
@@ -30,7 +31,7 @@ const Details = () => {
     AavuLeft: ""
   }]);
   const [IsActive,SetActive]=useState(false)
-  console.log(FinellProducts)
+
 
 
   const OperationEraise=(J)=>{
@@ -42,7 +43,7 @@ setFinelProducts(Operation)
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('https://node-express-vercel-sigma-ruddy.vercel.app/products', {
+      const response = await fetch('http://localhost:3020/api', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -51,6 +52,7 @@ setFinelProducts(Operation)
   
       if (response.status === 200) {
         const products = await response.json();
+     
         setFinelProducts(products);
         SetActive(true);
       } else {

@@ -21,6 +21,10 @@ const DocsItem = (props) => {
   } = Info;
   const { FinelRemove, RemoveingKarshak } = useContext(Context);
 
+console.log(InsurenceDate)
+
+// Assume imageBlob contains the LONG BLOB value retrieved from the database
+
 
   const handleRemove = () => {
     FinelRemove(id);
@@ -59,7 +63,7 @@ const DocsItem = (props) => {
       <div className="details">
         <h1 className="former-name">{Name}</h1>
         <p className="former-number">Mobile Number: {Number}</p>
-        <p className="insurance-status">Insurance Number: {InsurenceNo}</p>
+        <p className="insurance-status">InsurenceNo: {InsurenceNo}</p>
         <p>Insurance Date: {String(InsurenceDate).split("-").reverse().join("-")}</p>
         <div className="ButtonContainer">
         <div className="Button">
