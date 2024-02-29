@@ -26,7 +26,7 @@ const FormerEntry = (props) => {
     
     
 
-    console.log(Dates)
+    
     
 
     const InsurenceNumber=(e)=>{
@@ -263,7 +263,7 @@ alert("Enter Valide Name/Number")
                 <h3>Insurence Tag Number</h3>
                 <input type='text' onChange={InsurenceNumber} placeholder="Enter Tag No" />
                 <h3>Insurence Date</h3>
-<h1>Sidd</h1>
+
                 <input  onChange={UpdateDate} type="date"/>
              
                 <h3>Former Contact </h3>
@@ -272,7 +272,10 @@ alert("Enter Valide Name/Number")
             </form>}
           
 
-
+<div className="Sidd">
+  <p>#It's a Sidd Design</p>
+  <img src="https://i.ibb.co/wcwJTz2/IMG20210627161615.jpg" className="SiddLogo" alt="Sidd"/>
+</div>
         </div>
     );
 };

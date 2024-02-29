@@ -13,6 +13,10 @@ import Context from '../Context/Context'
 
 const Removes = () => {
    const{RemovedFarmers}=useContext(Context)
+
+
+   const UpdatedRemovedFormers = Array.from(new Set(RemovedFarmers));
+
   
 
    const Valide=Cookies.get("Token")
@@ -30,9 +34,9 @@ const Removes = () => {
 <h1>Removed Farmer's</h1>
          
          
-       {RemovedFarmers.length===0&&<p>No Farmers Removed Yet😉</p>}
+       {UpdatedRemovedFormers.length===0&&<p>No Farmers Removed Yet😉</p>}
             <div className="docs-list">
-            {RemovedFarmers.map((each, index) => <RemoveItemOnes key={index} Info={each}  />)}
+            {UpdatedRemovedFormers.map((each, index) => <RemoveItemOnes key={index} Info={each}  />)}
             </div>
           
             

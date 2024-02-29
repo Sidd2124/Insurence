@@ -9,8 +9,8 @@ const DocsItem = (props) => {
     Name,
     Number,
     ImageURL,
-    InsurenceDocument,
-    InsurenceDate,
+    InsuranceDocument,
+    InsuranceDate,
     AdharDocumentFront,
     AdharDocumentBack,
     InsurenceNo,
@@ -21,9 +21,20 @@ const DocsItem = (props) => {
   } = Info;
   const { FinelRemove, RemoveingKarshak } = useContext(Context);
 
-console.log(InsurenceDate)
 
-// Assume imageBlob contains the LONG BLOB value retrieved from the database
+
+
+// Original string containing date and time
+var dateTimeString = InsuranceDate;
+
+// Parse the string into a Date object
+var dateTime = new Date(dateTimeString);
+
+// Extract just the date portion
+var date = dateTime.toISOString().slice(0, 10);
+
+
+
 
 
   const handleRemove = () => {
@@ -32,11 +43,11 @@ console.log(InsurenceDate)
     RemoveingKarshak({
       Name,
       Number,
-      InsurenceDate,
+      InsuranceDate,
     });
   };
 
-  const oneYearFromInsurenceDate = new Date(InsurenceDate);
+  const oneYearFromInsurenceDate = new Date(date);
   oneYearFromInsurenceDate.setFullYear(oneYearFromInsurenceDate.getFullYear() + 1);
 
   const currentDate = new Date();
@@ -46,7 +57,7 @@ console.log(InsurenceDate)
     RemoveingKarshak({
       Name,
       Number,
-      InsurenceDate,
+      InsuranceDate,
     });
     
   }
@@ -64,10 +75,10 @@ console.log(InsurenceDate)
         <h1 className="former-name">{Name}</h1>
         <p className="former-number">Mobile Number: {Number}</p>
         <p className="insurance-status">InsurenceNo: {InsurenceNo}</p>
-        <p>Insurance Date: {String(InsurenceDate).split("-").reverse().join("-")}</p>
+        <p>Insurance Date: {date}</p>
         <div className="ButtonContainer">
         <div className="Button">
-          <button className="download-btn"><a href={InsurenceDocument} download={`${Name}_Insurence_Copey`}>DownLoadInsurenceDocument</a></button>
+          <button className="download-btn"><a href={InsuranceDocument} rel="noreferrer" target="_blank" download={`${Name}_Insurence_Copey`}>DownLoadInsurenceDocument</a></button>
           <button onClick={handleRemove} className="download-btn">
             Remove Former
           </button>

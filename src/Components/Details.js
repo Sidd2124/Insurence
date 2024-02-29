@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import DocsItem from "./DocsItems/Docsitems";
 import { Link, Redirect } from 'react-router-dom';
 import "react-phone-input-2/lib/style.css";
@@ -6,13 +6,12 @@ import Naresh from './Logo.png';
 import Cookies from 'js-cookie';
 import './styles.css';
 import Header from '../Components/Header/Header'
-import Context from './Context/Context'
+
 
 import './Details.css'
 
 const Details = () => {
-  const { FinelArray } = useContext(Context)
-  console.log(FinelArray)
+ 
   
   const [PhoneNumber, setPhoneNumber] = useState("");
   const [FinellProducts, setFinelProducts] = useState([ {
