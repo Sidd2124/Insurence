@@ -272,10 +272,7 @@ alert("Enter Valide Name/Number")
             </form>}
           
 
-<div className="Sidd">
-  <p>#It's a Sidd Design</p>
-  <img src="https://i.ibb.co/wcwJTz2/IMG20210627161615.jpg" className="SiddLogo" alt="Sidd"/>
-</div>
+
         </div>
     );
 };

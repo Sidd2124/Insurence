@@ -43,7 +43,7 @@ var date = dateTime.toISOString().slice(0, 10);
     RemoveingKarshak({
       Name,
       Number,
-      InsuranceDate,
+      date,
     });
   };
 

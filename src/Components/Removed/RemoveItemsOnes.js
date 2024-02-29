@@ -3,8 +3,6 @@ const RemoveItemOnes = ({ Info }) => {
   const {
     Name,
     Number,
-    
-    
     InsurenceDate,
     
     

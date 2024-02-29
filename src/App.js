@@ -27,6 +27,7 @@ class App extends Component {
     }
   }
 
+  
   // Remove an item from FirstArray and update local storage
   Happend = (K) => {
     const { FirstArray } = this.state;
@@ -56,13 +57,13 @@ class App extends Component {
   render() {
     const { FirstArray, RemovedOnes } = this.state;
 
-    console.log(FirstArray)
+    console.log(RemovedOnes)
 
    
 
     return (
       <div className="App">
-        {/* Provide context value to all children components */}
+        
         <Context.Provider value={{ 
           FinelArray: FirstArray, 
           NewArray: this.Update,
