@@ -103,7 +103,7 @@ setFinelProducts(Operation)
       ) : (
         <div className="docs-list">
 
-<h1>Sidd</h1>
+
 {IsActive ?   (
   <div>
     {filteredProducts.map((product, index) => (
