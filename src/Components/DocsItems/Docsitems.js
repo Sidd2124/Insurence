@@ -21,7 +21,7 @@ const DocsItem = (props) => {
   } = Info;
   const { FinelRemove, RemoveingKarshak } = useContext(Context);
 
-
+console.log(id)
 
 
 // Original string containing date and time

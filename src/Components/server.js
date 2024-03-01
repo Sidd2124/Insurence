@@ -7,7 +7,7 @@ const app = express();
 
 // Enable CORS for all routes
 app.use(cors());
-
+  
 // Parse JSON bodies with a larger size limit
 app.use(bodyParser.json({ limit: '50mb' }));
 
@@ -26,16 +26,18 @@ const pool = mysql.createPool({
 // Define routes using router
 const router = express.Router();
 
+// GET route to retrieve data
 router.get('/api', (req, res) => {
   pool.query('SELECT * FROM data', (error, results, fields) => {
     if (error) {
-      console.error('Error retrieving products:', error); // Enhance error logging
+      console.error('Error retrieving products:', error); 
       return res.status(500).json({ error: 'Error retrieving products' });
     }
     res.json(results);
   });
 });
 
+// POST route to insert new data
 router.post('/api', (req, res) => {
   const {
     id,
@@ -51,10 +53,6 @@ router.post('/api', (req, res) => {
     AavuBack,
     AavuRight,
     AavuLeft
-
-    
-
-    
   } = req.body;
 
   // Validate required fields
@@ -91,10 +89,6 @@ app.use((err, req, res, next) => {
 
 // Start the server
 const port = process.env.PORT || 3020;
-app.listen(port, (error) => {
-  if (error) {
-    console.error('Error starting server:', error);
-  } else {
-    console.log(`Server is running on port ${port}`);
-  }
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
