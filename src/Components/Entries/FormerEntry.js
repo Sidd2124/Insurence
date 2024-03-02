@@ -14,7 +14,7 @@ const FormerEntry = (props) => {
     const [Name, setName] = useState("");
     const [InsurenceDocument, setInsurenceDocument] = useState(null); 
     const [ImageFile, setImageFile] = useState();
-    const [Dates, SetDate] = useState("S");
+    const [Dates, SetDate] = useState();
     const[AdharOne,SetAdharOne]=useState()
     const[AdharTwo,SetAdharTwo]=useState()
     const[FarmwrInsurenceNumber,SetFarmwrInsurenceNumber]=useState()
@@ -25,7 +25,7 @@ const FormerEntry = (props) => {
     const[IsPosting,SetIsPosting]=useState(true)
     
     
-
+    console.log(ImageFile)
     
     
 
@@ -189,6 +189,7 @@ alert("Enter Valide Name/Number")
       SetIsPosting(false);
   
       const id = uuidv4();
+     
   
       try {
           const response = await fetch('http://localhost:3020/api', {
@@ -210,6 +211,8 @@ alert("Enter Valide Name/Number")
                   AavuBack: GomathBack,
                   AavuRight: GomathaRight,
                   AavuLeft: GoMathaLeft
+                
+                
                 
                   
               }),

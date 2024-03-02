@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 // Create a MySQL connection pool
 const pool = mysql.createPool({
-  connectionLimit: 10,
+  
   host: 'localhost',
   user: 'Siddu',
   password: 'Sidd@2124',
@@ -40,19 +40,7 @@ router.get('/api', (req, res) => {
 // POST route to insert new data
 router.post('/api', (req, res) => {
   const {
-    id,
-    Name,
-    Number,
-    ImageURL,
-    InsuranceDate,
-    InsuranceDocument,
-    AdharDocumentFront,
-    AdharDocumentBack,
-    InsurenceNo,
-    AavuFront,
-    AavuBack,
-    AavuRight,
-    AavuLeft
+    id, Name, Number, ImageURL, InsuranceDate, InsuranceDocument, AdharDocumentFront, AdharDocumentBack, InsurenceNo, AavuFront, AavuBack, AavuRight, AavuLeft
   } = req.body;
 
   // Validate required fields
@@ -62,7 +50,7 @@ router.post('/api', (req, res) => {
 
   const sql = 'INSERT INTO data (id, Name, Number, ImageURL, InsuranceDate, InsuranceDocument, AdharDocumentFront, AdharDocumentBack, InsurenceNo, AavuFront, AavuBack, AavuRight, AavuLeft) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
   const values = [id, Name, Number, ImageURL, InsuranceDate, InsuranceDocument, AdharDocumentFront, AdharDocumentBack, InsurenceNo, AavuFront, AavuBack, AavuRight, AavuLeft];
-
+console.log(values)
   // Log the request body
   console.log('Request Body:', req.body);
 
