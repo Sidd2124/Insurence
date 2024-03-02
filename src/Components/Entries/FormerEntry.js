@@ -25,7 +25,7 @@ const FormerEntry = (props) => {
     const[IsPosting,SetIsPosting]=useState(true)
     
     
-    console.log(ImageFile)
+ 
     
     
 
