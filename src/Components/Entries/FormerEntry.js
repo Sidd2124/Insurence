@@ -192,12 +192,12 @@ alert("Enter Valide Name/Number")
      
   
       try {
-          const response = await fetch('http://localhost:3020/api', {
+          const response = await fetch('https://dataapi-36b92-default-rtdb.firebaseio.com/data.json', {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',
               },  
-              body: JSON.stringify({
+              body: JSON.stringify({  
                   id: id,
                   Name: Name,
                   Number: Number,
