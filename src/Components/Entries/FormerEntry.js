@@ -8,23 +8,27 @@ import Naresh from '../Logo.png';
 import ClimbingBoxLoader from 'react-spinners/ClimbingBoxLoader'
 
 import Header from '../Header/Header'
+import axios from 'axios';
 
 const FormerEntry = (props) => {
+  const date=new Date()
+  const formattedDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+  
     const [Number, setNumber] = useState("");
     const [Name, setName] = useState("");
     const [InsurenceDocument, setInsurenceDocument] = useState(null); 
-    const [ImageFile, setImageFile] = useState();
-    const [Dates, SetDate] = useState();
-    const[AdharOne,SetAdharOne]=useState()
-    const[AdharTwo,SetAdharTwo]=useState()
-    const[FarmwrInsurenceNumber,SetFarmwrInsurenceNumber]=useState()
-    const[GoMathaFront,SetGoMathaFront]=useState()
-    const[GomathBack,SetGoMathaBack]=useState()
-    const[GomathaRight,SetGomathaRight]=useState()
-    const[GoMathaLeft,SetGoMathaLeft]=useState()
+    const [ImageFile, setImageFile] = useState("");
+    const [Dates, SetDate] = useState(formattedDate);
+    const[AdharOne,SetAdharOne]=useState("")
+    const[AdharTwo,SetAdharTwo]=useState("")
+    const[FarmwrInsurenceNumber,SetFarmwrInsurenceNumber]=useState("")
+    const[GoMathaFront,SetGoMathaFront]=useState("")
+    const[GomathBack,SetGoMathaBack]=useState("")
+    const[GomathaRight,SetGomathaRight]=useState("")
+    const[GoMathaLeft,SetGoMathaLeft]=useState("")
     const[IsPosting,SetIsPosting]=useState(true)
     
-    
+   
  
     
     
@@ -180,59 +184,48 @@ const CowLeft=(e)=>{
        
     };
 
-    const Submit = async (event) => {
-      event.preventDefault();
-
-      if(Name===""||Number===""){
-alert("Enter Valide Name/Number")
-      }
-      SetIsPosting(false);
-  
-      const id = uuidv4();
-     
-  
-      try {
-          const response = await fetch('https://dataapi-36b92-default-rtdb.firebaseio.com/data.json', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-              },  
-              body: JSON.stringify({  
-                  id: id,
-                  Name: Name,
-                  Number: Number,
-                  ImageURL: ImageFile,
-                  InsuranceDate: Dates,
-                  InsuranceDocument: InsurenceDocument,
-                  AdharDocumentFront: AdharOne,
-                  AdharDocumentBack: AdharTwo,
-                  InsurenceNo: FarmwrInsurenceNumber,
-                  AavuFront: GoMathaFront,
-                  AavuBack: GomathBack,
-                  AavuRight: GomathaRight,
-                  AavuLeft: GoMathaLeft
-                
-                
-                
-                  
-              }),
-          });
-  
-          if (response.ok) {
-              console.log('Data Posted Successfully');
-              const { history } = props;
-              history.push("/");
-          } else {
-              throw new Error('Failed to add product');
-          }
-      } catch (error) {
-          console.error('Error adding product:', error);
-          SetIsPosting(true); // Set IsPosting back to true in case of an error
-      }
-  };
-  
-  
     
+
+const Submit = async (event) => {
+  event.preventDefault();
+
+  if (Name === "" || Number === "") {
+    alert("Enter Valid Name/Number")
+    return;
+  }
+  SetIsPosting(false);
+
+  const id = uuidv4();
+
+  try {
+    const response = await axios.post('https://dataapi-36b92-default-rtdb.firebaseio.com/data.json', {
+      id: id,
+      Name: Name,
+      Number: Number,
+      ImageURL: ImageFile,
+      InsuranceDate: Dates,
+      InsuranceDocument: InsurenceDocument,
+      AdharDocumentFront: AdharOne,
+      AdharDocumentBack: AdharTwo,
+      InsurenceNo: FarmwrInsurenceNumber,
+      AavuFront: GoMathaFront,
+      AavuBack: GomathBack,
+      AavuRight: GomathaRight,
+      AavuLeft: GoMathaLeft
+    });
+
+    if (response.status === 200) {
+      console.log('Data Posted Successfully');
+      const { history } = props;
+      history.push("/");
+    } else {
+      throw new Error('Failed to add product');
+    }
+  } catch (error) {
+    console.error('Error adding product:', error);
+    SetIsPosting(true); // Set IsPosting back to true in case of an error
+  }
+};
 
     return (
         <div className="FormsTop"> 

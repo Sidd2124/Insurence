@@ -7,6 +7,8 @@ import Cookies from 'js-cookie';
 import './styles.css';
 import Header from '../Components/Header/Header'
 
+import axios from 'axios';
+
 
 import './Details.css'
 
@@ -20,17 +22,14 @@ console.log(FinellProducts)
     setFinelProducts(Operation);
   }
 
+
+
   const fetchProducts = async () => {
     try {
-      const response = await fetch('https://dataapi-36b92-default-rtdb.firebaseio.com/data.json', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (response.ok) {
-        const products = await response.json();
+      const response = await axios.get('https://dataapi-36b92-default-rtdb.firebaseio.com/data.json');
+  
+      if (response) {
+        const products = response.data;
         const dataArray = Object.values(products);
         setFinelProducts(dataArray);
         SetActive(true);
@@ -41,6 +40,7 @@ console.log(FinellProducts)
       console.error('Error fetching products:', error);
     }
   };
+  
 
   useEffect(() => {
     fetchProducts();
