@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DocsItem from "./DocsItems/Docsitems";
-import { Link, Redirect } from 'react-router-dom';
+import {Redirect } from 'react-router-dom';
 import "react-phone-input-2/lib/style.css";
 import Naresh from './Logo.png';
 import Cookies from 'js-cookie';
@@ -16,23 +16,26 @@ const Details = () => {
   const [PhoneNumber, setPhoneNumber] = useState("");
   const [FinellProducts, setFinelProducts] = useState([]);
   const [IsActive,SetActive]=useState(false)
-console.log(FinellProducts)
+  const [Timer,SetTimer]=useState(0)
+
   const OperationEraise = (J) => {
     const Operation = FinellProducts.filter((each) => each.id !== J);
     setFinelProducts(Operation);
   }
 
-
+console.log(Timer)
 
   const fetchProducts = async () => {
     try {
       const response = await axios.get('https://dataapi-36b92-default-rtdb.firebaseio.com/data.json');
-  
+      SetTimer(100)
       if (response) {
+       
         const products = response.data;
         const dataArray = Object.values(products);
         setFinelProducts(dataArray);
         SetActive(true);
+       
       } else {
         throw new Error('Failed to fetch products. Status: ' + response.status);
       }
@@ -41,10 +44,23 @@ console.log(FinellProducts)
     }
   };
   
-
   useEffect(() => {
     fetchProducts();
-  }, []);
+
+    const intervalId = setInterval(() => {
+      SetTimer(prevTimer => {
+        if (prevTimer === 100) {
+          clearInterval(intervalId);
+        }
+        return prevTimer + 1;
+      });
+    }, 200);
+
+    // Cleanup function to clear the interval when the component unmounts
+    return () => clearInterval(intervalId);
+}, []);
+
+
 
   const handlePhoneChange = (e) => {
     setPhoneNumber(e.target.value)
@@ -70,12 +86,14 @@ console.log(FinellProducts)
         onChange={handlePhoneChange}
       />
       {FinellProducts.length === 0 ? (
-        <div>
-          <h1 className='Warning FarmerLogo'>Please Add Formers Details 
-            <Link to="/Entries" className="Link">
-              <button className='Buttons'>New Farmer</button>
-            </Link>
-          </h1>
+        <div className='Warning FarmerLogo'>
+         
+          <h4 className="Typing">Farmer List Loading....</h4>
+
+          <h3 className='Text'>
+            {Timer}% 
+           </h3>
+          
         </div>
       ) : (
         <div className="docs-list">
